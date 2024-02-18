@@ -7,7 +7,7 @@ function MoviePage() {
   const { id } = useParams();
   const [movie, setMovie] = useState([]);
   const [reviews, setReviews] = useState([]);
-  const [showFullReviews, setShowFullReviews] = useState(false);
+  const [expandedReviews, setExpandedReviews] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,9 +30,13 @@ function MoviePage() {
     fetchData();
   }, [id]);
 
-  const toggleShowFullReviews = () => {
-    setShowFullReviews(!showFullReviews);
+  const toggleShowFullReview = (reviewId) => {
+    setExpandedReviews((prevExpandedReviews) => ({
+      ...prevExpandedReviews,
+      [reviewId]: !prevExpandedReviews[reviewId],
+    }));
   };
+
   return (
     <div>
       <Navbar />
@@ -66,20 +70,46 @@ function MoviePage() {
           </div>
           <div className="my-5 py-5">
             <h2>Reviews</h2>
+            <div className="border">
+              <div className="mb-3 mx-3 my-3">
+                <label for="exampleFormControlInput1" class="form-label">
+                  User
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                />
+              </div>
+
+              <div className="mb-3 mx-3 my-3">
+                <label for="exampleFormControlTextarea1" class="form-label">
+                  Your review
+                </label>
+                <textarea
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                ></textarea>
+              </div>
+              <button type="button" className="btn btn-secondary mx-3 my-3">
+                Submit
+              </button>
+            </div>
             {reviews.map((review) => (
               <div key={review.id} className="border my-5">
                 <p className="fw-bold">{review.author}</p>
-                {showFullReviews ? (
+                {expandedReviews[review.id] ? (
                   <p>{review.content}</p>
                 ) : (
                   <p>{review.content.slice(0, 700)}...</p>
                 )}
                 {review.content.length > 700 && (
                   <button
-                    onClick={toggleShowFullReviews}
+                    onClick={() => toggleShowFullReview(review.id)}
                     className="btn btn-light "
                   >
-                    {showFullReviews ? "See Less" : "See More"}
+                    {expandedReviews[review.id] ? "See Less" : "See More"}
                   </button>
                 )}
               </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import Genre from "./Genre";
 
 function Filters() {
   return (
@@ -14,11 +15,7 @@ function Filters() {
       </a>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item">
-          <a href="#" className="nav-link active" aria-current="page">
-            Home
-          </a>
-        </li>
+        <Genre />
         <li>
           <a href="#" className="nav-link text-white">
             Dashboard
