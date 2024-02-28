@@ -5,17 +5,18 @@ import Navbar from "../components/Navbar";
 import Filters from "../components/Filters";
 
 function Genrespage() {
-  const { genre } = useParams();
+  const { genre: genreId } = useParams();
   const [movies, setMovies] = useState([]);
+  const [genre, setGenre] = useState(null);
 
   useEffect(() => {
     fetchMoviesByGenre();
-  }, [genre]);
+  }, [genreId]);
 
   const fetchMoviesByGenre = async () => {
     const apiKey = "66fb5ac8dfbf22ff845e82003db9b6ad";
     const genreUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${encodeURIComponent(
-      genre
+      genreId
     )}`;
 
     try {
@@ -25,6 +26,20 @@ function Genrespage() {
     } catch (error) {
       console.error(error);
     }
+
+    // Fetch genre data based on genre ID
+    const genresUrl = `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${apiKey}`;
+    try {
+      const genresResponse = await fetch(genresUrl);
+      const genresData = await genresResponse.json();
+      console.log(genresData);
+      const selectedGenre = genresData.genres.find(
+        (g) => g.id.toString() === genreId
+      );
+      setGenre(selectedGenre);
+    } catch (error) {
+      console.error("Error fetching genres:", error);
+    }
   };
 
   return (
@@ -32,7 +47,7 @@ function Genrespage() {
       <Navbar />
       <div className="d-flex">
         <Filters />
-        <MovieList movies={movies} genre={genre} />;
+        <MovieList movies={movies} genre={genre} />
       </div>
     </div>
   );

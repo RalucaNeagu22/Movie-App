@@ -1,20 +1,32 @@
 import React from "react";
+import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <header className="p-3 text-bg-dark">
-      <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <p className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"></p>
-
-        <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li>Home</li>
-          <li>Features</li>
-          <li>Pricing</li>
-          <li>FAQs</li>
-          <li>About</li>
+    <header className="p-3 text-bg-dark sticky-top">
+      <div className="d-flex flex-wrap align-items-center justify-content-lg-start gap-5">
+        <Link to={"/"}>
+          <img
+            src={logo}
+            alt="Company Logo"
+            style={{ width: "50px" }}
+            className="mx-5"
+          />
+        </Link>
+        <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 gap-3">
+          <Link
+            to={"/movie-recommandation-engine"}
+            className="text-decoration-none text-white"
+          >
+            <li>Movie Recommandation</li>
+          </Link>
+          <Link to={"/About"} className="text-decoration-none text-white">
+            <li>About</li>
+          </Link>
         </ul>
 
-        <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <form className="col-3" role="search">
           <input
             type="search"
             className="form-control form-control-dark text-bg-dark"
@@ -23,13 +35,33 @@ function Navbar() {
           />
         </form>
 
-        <div className="text-end">
-          <button type="button" className="btn btn-outline-light me-2">
-            Login
-          </button>
-          <button type="button" className="btn btn-warning">
-            Sign-up
-          </button>
+        <div className="dropdown">
+          <a
+            href="#"
+            className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="https://github.com/mdo.png"
+              alt=""
+              width="32"
+              height="32"
+              className="rounded-circle me-2"
+            />
+            <strong>My profile</strong>
+          </a>
+          <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
+            <Link to={"/Watchlist"} className="text-decoration-none">
+              <li className="dropdown-item">Watchlist</li>
+            </Link>
+            <Link to={"/Already-seen"} className="text-decoration-none">
+              <li className="dropdown-item">Already seen</li>
+            </Link>
+            <Link to={"/Watchlist"} className="text-decoration-none">
+              <li className="dropdown-item">My reviews</li>
+            </Link>
+          </ul>
         </div>
       </div>
     </header>

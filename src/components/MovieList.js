@@ -2,16 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function MovieList({ genre, movies }) {
-  console.log(genre);
+  if (genre == null) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
-      <div>
+      <div style={{ marginLeft: "20rem" }}>
         <div className="mx-5 my-5">
-          <h1 className="fs-3">{genre}</h1>
+          <h1 className="fs-3">{genre.name}</h1>
         </div>
         <div className="row m-auto">
           {movies.map((movie) => (
-            <div key={movie.id} className="col-3">
+            <div key={movie.id} className="col-2">
               <Link
                 to={`/movie/${encodeURIComponent(movie.id)}`}
                 style={{ color: "inherit", textDecoration: "none" }}
@@ -23,7 +25,7 @@ function MovieList({ genre, movies }) {
                 />
                 <div className="d-flex gap-1">
                   <p className="fw-semibold">{movie.title}</p>
-                  <p className="fw-bold">{movie.vote_average}</p>
+                  <p className="fw-bold">{movie.vote_average.toFixed(1)}</p>
                 </div>
               </Link>
             </div>

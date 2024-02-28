@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Filters from "../components/Filters";
 import { useParams } from "react-router-dom";
+import MovieDetails from "../components/MovieDetails";
+import Reviews from "../components/Reviews";
 
 function MoviePage() {
   const { id } = useParams();
   const [movie, setMovie] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [expandedReviews, setExpandedReviews] = useState({});
+  const [favorites, setFavorites] = useState([]);
+  const [seen, setSeen] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,84 +41,69 @@ function MoviePage() {
     }));
   };
 
+  const handleClick = () => {
+    if (movie) {
+      const { id, title, poster_path, vote_average, vote_count } = movie;
+      const favoritesFromStorage =
+        JSON.parse(localStorage.getItem("favorites")) || [];
+      const isMovieInFavorites = favoritesFromStorage.some(
+        (favorite) => favorite.id === movie.id
+      );
+
+      if (isMovieInFavorites) {
+        const updatedFavorites = favoritesFromStorage.filter(
+          (favorite) => favorite.id !== id
+        );
+        localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+        setFavorites(updatedFavorites);
+      } else {
+        const updatedFavorites = [
+          ...favoritesFromStorage,
+          { id, title, poster_path, vote_average, vote_count },
+        ];
+        localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+        setFavorites(updatedFavorites);
+      }
+    }
+  };
+  const handleClickButton = () => {
+    if (movie) {
+      const { id, title, poster_path, vote_average, vote_count } = movie;
+      const seenFromStorage = JSON.parse(localStorage.getItem("seen")) || [];
+      const isMovieInSeen = seenFromStorage.some(
+        (seen) => seen.id === movie.id
+      );
+      if (isMovieInSeen) {
+        const updatedSeen = seenFromStorage.filter((seen) => seen.id !== id);
+        localStorage.setItem("seen", JSON.stringify(updatedSeen));
+        setSeen(updatedSeen);
+      } else {
+        const updatedSeen = [
+          ...seenFromStorage,
+          { id, title, poster_path, vote_average, vote_count },
+        ];
+        localStorage.setItem("seen", JSON.stringify(updatedSeen));
+        setSeen(updatedSeen);
+      }
+    }
+  };
+
   return (
     <div>
       <Navbar />
-      <div className="d-flex">
-        <Filters />
+      <Filters />
+      <div style={{ marginLeft: "20rem" }}>
         <div className="mx-5 my-5">
-          <div>
-            {movie && (
-              <div>
-                <h2>{movie.title}</h2>
-                <p> {movie.genres?.map((genre) => genre.name).join(", ")}</p>
-                <div className="row">
-                  <div className="col-8 d-flex row">
-                    <div className="col-6">
-                      <img
-                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                        alt={movie.title}
-                        className="img-fluid"
-                      />
-                    </div>
-                    <div className="col-6">
-                      <p>
-                        {movie.vote_average} ({movie.vote_count} votes)
-                      </p>
-                      <p>{movie.overview}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="my-5 py-5">
-            <h2>Reviews</h2>
-            <div className="border">
-              <div className="mb-3 mx-3 my-3">
-                <label for="exampleFormControlInput1" class="form-label">
-                  User
-                </label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleFormControlInput1"
-                />
-              </div>
-
-              <div className="mb-3 mx-3 my-3">
-                <label for="exampleFormControlTextarea1" class="form-label">
-                  Your review
-                </label>
-                <textarea
-                  class="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows="3"
-                ></textarea>
-              </div>
-              <button type="button" className="btn btn-secondary mx-3 my-3">
-                Submit
-              </button>
-            </div>
-            {reviews.map((review) => (
-              <div key={review.id} className="border my-5">
-                <p className="fw-bold">{review.author}</p>
-                {expandedReviews[review.id] ? (
-                  <p>{review.content}</p>
-                ) : (
-                  <p>{review.content.slice(0, 700)}...</p>
-                )}
-                {review.content.length > 700 && (
-                  <button
-                    onClick={() => toggleShowFullReview(review.id)}
-                    className="btn btn-light "
-                  >
-                    {expandedReviews[review.id] ? "See Less" : "See More"}
-                  </button>
-                )}
-              </div>
-            ))}
-          </div>
+          <MovieDetails
+            movie={movie}
+            handleClick={handleClick}
+            handleClickButton={handleClickButton}
+          />
+          <Reviews
+            reviews={reviews}
+            expandedReviews={expandedReviews}
+            toggleShowFullReview={toggleShowFullReview}
+          />
         </div>
       </div>
     </div>

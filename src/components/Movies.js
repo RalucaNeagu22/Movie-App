@@ -26,13 +26,13 @@ function Movies() {
     fetchData();
   }, []);
   return (
-    <div>
-      <div className="mx-5 my-5">
+    <div style={{ marginLeft: "20rem" }}>
+      <div className="mx-5 my-5 ">
         <h1 className="fs-3">Top Rated Movies</h1>
       </div>
       <div className="row m-auto">
         {movies.map((movie) => (
-          <div key={movie.id} className="col-3">
+          <div key={movie.id} className="col-2">
             <Link
               to={`/movie/${encodeURIComponent(movie.id)}`}
               style={{ color: "inherit", textDecoration: "none" }}
