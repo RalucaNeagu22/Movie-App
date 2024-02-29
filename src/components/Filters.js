@@ -16,16 +16,7 @@ function Filters() {
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
         <Genre />
-        <li>
-          <a href="#" className="nav-link text-white">
-            Dashboard
-          </a>
-        </li>
-        <li>
-          <a href="#" className="nav-link text-white">
-            Orders
-          </a>
-        </li>
+
         <li>
           <a href="#" className="nav-link text-white">
             Products

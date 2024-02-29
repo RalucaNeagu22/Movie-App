@@ -19,7 +19,6 @@ function Genre() {
       console.error("Error fetching genres:", error);
     }
   };
-
   return (
     <div>
       <div className="btn-group">
@@ -29,7 +28,7 @@ function Genre() {
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Genre
+          Movie Genre
         </button>
         <ul className="dropdown-menu">
           {genres.map((genre) => (

@@ -27,7 +27,6 @@ function Genrespage() {
       console.error(error);
     }
 
-    // Fetch genre data based on genre ID
     const genresUrl = `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${apiKey}`;
     try {
       const genresResponse = await fetch(genresUrl);
