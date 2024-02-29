@@ -7,6 +7,8 @@ import About from "./pages/About";
 import Watchlist from "./pages/Watchlist";
 import AlreadySeen from "./pages/AlreadySeen";
 import PageNotFound from "./pages/PageNotFound";
+import Upcoming from "./pages/Upcoming";
+import Popular from "./pages/Popular";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/Watchlist" element={<Watchlist />} />
         <Route path="/Already-seen" element={<AlreadySeen />} />
         <Route path="/*" element={<PageNotFound />} />
+        <Route path="/upcoming" element={<Upcoming />} />
+        <Route path="/popular" element={<Popular />} />
       </Routes>
     </BrowserRouter>
   );

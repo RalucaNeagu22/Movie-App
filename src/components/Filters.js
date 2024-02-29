@@ -1,5 +1,6 @@
 import React from "react";
 import Genre from "./Genre";
+import { Link } from "react-router-dom";
 
 function Filters() {
   return (
@@ -15,18 +16,24 @@ function Filters() {
       </a>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
-        <Genre />
-
         <li>
-          <a href="#" className="nav-link text-white">
-            Products
-          </a>
+          <Genre />
         </li>
-        <li>
-          <a href="#" className="nav-link text-white">
-            Customers
-          </a>
-        </li>
+        <Link to={"/"} style={{ color: "inherit", textDecoration: "none" }}>
+          <li>Top Rated Movies</li>
+        </Link>
+        <Link
+          to={"/upcoming"}
+          style={{ color: "inherit", textDecoration: "none" }}
+        >
+          <li>Upcoming</li>
+        </Link>
+        <Link
+          to={"/popular"}
+          style={{ color: "inherit", textDecoration: "none" }}
+        >
+          <li>Popular</li>
+        </Link>
       </ul>
     </div>
   );

@@ -4,6 +4,7 @@ import Filters from "../components/Filters";
 import { useParams } from "react-router-dom";
 import MovieDetails from "../components/MovieDetails";
 import Reviews from "../components/Reviews";
+import Similar from "../components/Similar";
 
 function MoviePage() {
   const { id } = useParams();
@@ -104,6 +105,7 @@ function MoviePage() {
             expandedReviews={expandedReviews}
             toggleShowFullReview={toggleShowFullReview}
           />
+          <Similar movieId={id} />
         </div>
       </div>
     </div>
