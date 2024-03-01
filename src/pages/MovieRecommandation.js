@@ -6,49 +6,26 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function MovieRecommandation() {
-  const [loading, setLoading] = useState(false);
   const [randomMovie, setRandomMovie] = useState(null);
-
+  useEffect(() => {
+    setRandomMovie(null);
+  }, []);
   const handleSubmit = async () => {
-    setLoading(true);
-
-    try {
-      const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/top_rated",
-        {
-          params: {
-            api_key: "66fb5ac8dfbf22ff845e82003db9b6ad",
-          },
-        }
-      );
-
-      setLoading(false);
-
-      const movies = response.data.results;
-      const randomIndex = Math.floor(Math.random() * movies.length);
-      const randomSelectedMovie = movies[randomIndex];
-      setRandomMovie(randomSelectedMovie);
-
-      // Store the movie information in local storage
-      localStorage.setItem("randomMovie", JSON.stringify(randomSelectedMovie));
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      setLoading(false);
-    }
+    const randomPage = Math.floor(Math.random() * 100) + 1;
+    const response = await axios.get(
+      "https://api.themoviedb.org/3/movie/top_rated",
+      {
+        params: {
+          api_key: "66fb5ac8dfbf22ff845e82003db9b6ad",
+          page: randomPage,
+        },
+      }
+    );
+    const movies = response.data.results;
+    const randomIndex = Math.floor(Math.random() * movies.length);
+    const randomSelectedMovie = movies[randomIndex];
+    setRandomMovie(randomSelectedMovie);
   };
-
-  useEffect(() => {
-    // Check if there is a stored movie suggestion in local storage
-    const storedMovie = localStorage.getItem("randomMovie");
-    if (storedMovie) {
-      setRandomMovie(JSON.parse(storedMovie));
-    }
-  }, []);
-
-  // Clear the stored movie suggestion when the component unmounts
-  useEffect(() => {
-    return () => localStorage.removeItem("randomMovie");
-  }, []);
 
   return (
     <div>
@@ -84,15 +61,9 @@ function MovieRecommandation() {
               type="button"
               className="btn btn-dark btn-lg my-5"
               onClick={handleSubmit}
-              disabled={loading}
             >
               Start Now
             </button>
-            {loading && (
-              <p className="placeholder-glow mt-3">
-                <span className="placeholder col-12"></span>
-              </p>
-            )}
             {randomMovie && (
               <div className="mt-3">
                 <Link
