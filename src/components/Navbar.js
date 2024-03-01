@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <header className="p-3 text-bg-dark sticky-top">
+    <header className="p-3 text-bg-dark sticky-top row me-0">
       <div className="d-flex flex-wrap align-items-center justify-content-lg-start gap-5">
         <Link to={"/"}>
           <img
             src={logo}
             alt="Company Logo"
-            style={{ width: "50px" }}
+            style={{ width: "2rem", height: "2rem" }}
             className="mx-5"
           />
         </Link>
-        <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 gap-3">
+        <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 gap-5">
           <Link
             to={"/movie-recommandation-engine"}
             className="text-decoration-none text-white"
@@ -25,15 +25,18 @@ function Navbar() {
             <li>About</li>
           </Link>
         </ul>
-
-        <form className="col-3" role="search">
-          <input
-            type="search"
-            className="form-control form-control-dark text-bg-dark"
-            placeholder="Search..."
-            aria-label="Search"
-          />
-        </form>
+        <div className="col-3">
+          <Link to={"/search"} className="text-decoration-none text-white">
+            <form className="w-100" role="search">
+              <input
+                type="search"
+                className="form-control form-control-dark text-bg-dark"
+                placeholder="Search..."
+                aria-label="Search"
+              />
+            </form>
+          </Link>
+        </div>
 
         <div className="dropdown">
           <a

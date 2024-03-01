@@ -8,8 +8,10 @@ function Upcoming() {
   return (
     <div>
       <Navbar />
-      <Filters />
-      <Movies apiUrl={apiUrl2} title="Upcoming movies" />
+      <div className="d-flex ">
+        <Filters />
+        <Movies apiUrl={apiUrl2} title="Upcoming movies" />
+      </div>
     </div>
   );
 }

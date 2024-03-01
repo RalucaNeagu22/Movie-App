@@ -92,20 +92,22 @@ function MoviePage() {
   return (
     <div>
       <Navbar />
-      <Filters />
-      <div style={{ marginLeft: "20rem" }}>
-        <div className="mx-5 my-5">
-          <MovieDetails
-            movie={movie}
-            handleClick={handleClick}
-            handleClickButton={handleClickButton}
-          />
-          <Reviews
-            reviews={reviews}
-            expandedReviews={expandedReviews}
-            toggleShowFullReview={toggleShowFullReview}
-          />
-          <Similar movieId={id} />
+      <div className="d-flex">
+        <Filters />
+        <div>
+          <div className="mx-5 my-5">
+            <MovieDetails
+              movie={movie}
+              handleClick={handleClick}
+              handleClickButton={handleClickButton}
+            />
+            <Reviews
+              reviews={reviews}
+              expandedReviews={expandedReviews}
+              toggleShowFullReview={toggleShowFullReview}
+            />
+            <Similar movieId={id} />
+          </div>
         </div>
       </div>
     </div>

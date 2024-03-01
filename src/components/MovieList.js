@@ -12,8 +12,8 @@ function MovieList({ genre, movies }) {
           <h1 className="fs-3">{genre.name}</h1>
         </div>
         <div className="row m-auto">
-          {movies.map((movie) => (
-            <div key={movie.id} className="col-2">
+          {movies.map((movie, index) => (
+            <div key={index} className="col-lg-2">
               <Link
                 to={`/movie/${encodeURIComponent(movie.id)}`}
                 style={{ color: "inherit", textDecoration: "none" }}

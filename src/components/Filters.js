@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 function Filters() {
   return (
     <div
-      className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-bottom"
-      style={{ width: "18rem", height: "95vh" }}
+      className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark row col-1 sticky-top"
+      style={{ zIndex: 1000, top: "3.5rem", height: "100vh" }}
     >
       <a
         href="/"

@@ -8,8 +8,10 @@ function Popular() {
   return (
     <div>
       <Navbar />
-      <Filters />
-      <Movies apiUrl={apiUrl3} title="Popular movies" />
+      <div className="d-flex ">
+        <Filters />
+        <Movies apiUrl={apiUrl3} title="Popular movies" />
+      </div>
     </div>
   );
 }

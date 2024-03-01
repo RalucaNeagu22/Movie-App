@@ -21,11 +21,11 @@ function Movies({ apiUrl, title }) {
   }, [pageNumber]);
 
   return (
-    <div style={{ marginLeft: "20rem" }}>
-      <div className="mx-5 my-5">
+    <div className="mx-4">
+      <div className=" my-5">
         <h1 className="fs-3">{title}</h1>
       </div>
-      <div className="row m-auto">
+      <div className="row me-0">
         {movies.map((movie) => (
           <div key={movie.id} className="col-2">
             <Link
