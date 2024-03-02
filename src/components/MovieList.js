@@ -7,7 +7,7 @@ function MovieList({ genre, movies }) {
   }
   return (
     <div>
-      <div style={{ marginLeft: "20rem" }}>
+      <div style={{ marginLeft: "17rem" }}>
         <div className="mx-5 my-5">
           <h1 className="fs-3">{genre.name}</h1>
         </div>
@@ -25,7 +25,7 @@ function MovieList({ genre, movies }) {
                 />
                 <div className="d-flex gap-1">
                   <p className="fw-semibold">{movie.title}</p>
-                  <p className="fw-bold">{movie.vote_average.toFixed(1)}</p>
+                  <p className="fw-bold">{movie.vote_average.toFixed(1)}/10</p>
                 </div>
               </Link>
             </div>

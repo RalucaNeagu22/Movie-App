@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarComponents/Navbar";
 import Filters from "../components/Filters";
 import Movies from "../components/Movies";
 

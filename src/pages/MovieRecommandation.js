@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarComponents/Navbar";
 import Filters from "../components/Filters";
 import logo from "../assets/moviesblurred.png";
 import axios from "axios";
@@ -28,75 +28,67 @@ function MovieRecommandation() {
   };
 
   return (
-    <div>
+    <div className="bg-body-secondary bg-gradient" style={{ height: "100vh" }}>
       <Navbar />
-      <div className="d-flex">
-        <Filters />
-        <div>
+      <Filters />
+      <div
+        style={{ marginLeft: "17rem" }}
+        className="me-4 mt-5 d-flex flex-column align-items-center "
+      >
+        <p
+          style={{
+            color: "#868B8E",
+          }}
+          className="fs-3"
+        >
+          MOVIE RECOMMENDATION ENGINE
+        </p>
+        <p style={{ color: "#868B8E" }} className="fs-4">
+          You can't decide between thousands of movies?
+        </p>
+        <p style={{ color: "#868B8E" }} className="fs-4">
+          Press the button and let us do the work!
+        </p>
+        <button
+          type="button"
+          className="btn btn-dark btn-lg my-5"
+          onClick={handleSubmit}
+        >
+          Start Now
+        </button>
+        {randomMovie && (
           <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              textAlign: "center",
-              color: "#868B8E",
-              zIndex: 1,
-            }}
+            className="mt-1 bg-secondary-subtle bg-opacity-10 d-flex justify-content-center"
+            style={{ width: "17vw" }}
           >
-            <h1
-              style={{
-                color: "#868B8E",
-              }}
+            <Link
+              to={`/movie/${encodeURIComponent(randomMovie.id)}`}
+              style={{ color: "inherit", textDecoration: "none" }}
             >
-              MOVIE RECOMMENDATION ENGINE
-            </h1>
-            <p style={{ color: "#868B8E" }} className="fs-3">
-              You can't decide between thousands of movies?
-            </p>
-            <p style={{ color: "#868B8E" }} className="fs-3">
-              Press the button and let us do the work!
-            </p>
-            <button
-              type="button"
-              className="btn btn-dark btn-lg my-5"
-              onClick={handleSubmit}
-            >
-              Start Now
-            </button>
-            {randomMovie && (
-              <div className="mt-3">
-                <Link
-                  to={`/movie/${encodeURIComponent(randomMovie.id)}`}
-                  style={{ color: "inherit", textDecoration: "none" }}
-                >
-                  <h2>Random Movie Suggestion:</h2>
-                  <p className="fs-3 fw-bold">{randomMovie.title}</p>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
-                    alt={randomMovie.title}
-                    style={{ width: "20rem" }}
-                  />
-                </Link>
+              <p
+                className="fs-3 fw-bold text-center pt-2"
+                style={{ color: "#868B8E" }}
+              >
+                {randomMovie.title}
+              </p>
+
+              <p
+                className="fs-3 fw-bold text-center"
+                style={{ color: "#868B8E" }}
+              >
+                {randomMovie.vote_average.toFixed(1)}/10
+              </p>
+              <div className="d-flex justify-content-center">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
+                  alt={randomMovie.title}
+                  style={{ width: "15vw" }}
+                  className="p-3 mb-4"
+                />
               </div>
-            )}
+            </Link>
           </div>
-          <div
-            style={{
-              backgroundImage: `url(${logo})`,
-              backgroundSize: "contain",
-              backgroundRepeat: "repeat",
-              width: "100vw",
-              height: "100vh",
-              backgroundPositionX: "70%",
-              filter: "blur(5px)",
-              position: "absolute",
-              top: 0,
-              left: 0,
-              zIndex: 0,
-            }}
-          ></div>
-        </div>
+        )}
       </div>
     </div>
   );

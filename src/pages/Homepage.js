@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarComponents/Navbar";
 import Filters from "../components/Filters";
 import Movies from "../components/Movies";
 import React from "react";
@@ -9,10 +9,8 @@ function Homepage() {
   return (
     <div>
       <Navbar />
-      <div className="d-flex ">
-        <Filters />
-        <Movies apiUrl={apiUrl} title="Top Rated Movies" />
-      </div>
+      <Filters />
+      <Movies apiUrl={apiUrl} title="Top Rated Movies" />
     </div>
   );
 }

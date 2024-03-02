@@ -21,7 +21,7 @@ function Movies({ apiUrl, title }) {
   }, [pageNumber]);
 
   return (
-    <div className="mx-4">
+    <div style={{ marginLeft: "17rem" }}>
       <div className=" my-5">
         <h1 className="fs-3">{title}</h1>
       </div>
@@ -38,8 +38,18 @@ function Movies({ apiUrl, title }) {
                 className="img-fluid"
               />
               <div className="d-flex gap-1">
-                <p className="fw-semibold">{movie.title}</p>
-                <p className="fw-bold">{movie.vote_average.toFixed(1)}</p>
+                <p
+                  className="fw-semibold"
+                  style={{
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    height: "25%",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {movie.title}
+                </p>
+                <p className="fw-bold">{movie.vote_average.toFixed(1)}/10</p>
               </div>
             </Link>
           </div>

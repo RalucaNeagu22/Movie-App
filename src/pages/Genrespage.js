@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieList from "../components/MovieList";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarComponents/Navbar";
 import Filters from "../components/Filters";
 
 function Genrespage() {

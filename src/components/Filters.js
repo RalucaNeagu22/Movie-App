@@ -5,36 +5,36 @@ import { Link } from "react-router-dom";
 function Filters() {
   return (
     <div
-      className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark row col-1 sticky-top"
-      style={{ zIndex: 1000, top: "3.5rem", height: "100vh" }}
+      className="d-flex flex-column gap-3 p-3 text-bg-dark fixed-top"
+      style={{ zIndex: 1000, top: "3rem", height: "100vh", width: "15rem" }}
     >
-      <a
-        href="/"
-        className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
-      >
-        <span className="fs-4">Sidebar</span>
-      </a>
+      <span className="fs-5 pt-3 pt-sm-5 ps-2">Discover</span>
       <hr />
-      <ul className="nav nav-pills flex-column mb-auto">
-        <li>
-          <Genre />
-        </li>
+      <div className="nav nav-pills flex-column mb-auto gap-2">
+        <Genre />
+
         <Link to={"/"} style={{ color: "inherit", textDecoration: "none" }}>
-          <li>Top Rated Movies</li>
+          <button className="btn btn-dark w-100 d-flex justify-content-start">
+            Top Rated Movies
+          </button>
         </Link>
         <Link
           to={"/upcoming"}
           style={{ color: "inherit", textDecoration: "none" }}
         >
-          <li>Upcoming</li>
+          <button className="btn btn-dark w-100 d-flex justify-content-start">
+            Upcoming
+          </button>
         </Link>
         <Link
           to={"/popular"}
           style={{ color: "inherit", textDecoration: "none" }}
         >
-          <li>Popular</li>
+          <button className="btn btn-dark w-100 d-flex justify-content-start">
+            Popular
+          </button>
         </Link>
-      </ul>
+      </div>
     </div>
   );
 }

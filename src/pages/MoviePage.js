@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarComponents/Navbar";
 import Filters from "../components/Filters";
 import { useParams } from "react-router-dom";
 import MovieDetails from "../components/MovieDetails";
@@ -92,22 +92,20 @@ function MoviePage() {
   return (
     <div>
       <Navbar />
-      <div className="d-flex">
-        <Filters />
-        <div>
-          <div className="mx-5 my-5">
-            <MovieDetails
-              movie={movie}
-              handleClick={handleClick}
-              handleClickButton={handleClickButton}
-            />
-            <Reviews
-              reviews={reviews}
-              expandedReviews={expandedReviews}
-              toggleShowFullReview={toggleShowFullReview}
-            />
-            <Similar movieId={id} />
-          </div>
+      <Filters />
+      <div style={{ marginLeft: "17rem" }}>
+        <div className="mx-5 my-5">
+          <MovieDetails
+            movie={movie}
+            handleClick={handleClick}
+            handleClickButton={handleClickButton}
+          />
+          <Reviews
+            reviews={reviews}
+            expandedReviews={expandedReviews}
+            toggleShowFullReview={toggleShowFullReview}
+          />
+          <Similar movieId={id} />
         </div>
       </div>
     </div>

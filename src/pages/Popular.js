@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarComponents/Navbar";
 import Filters from "../components/Filters";
 import Movies from "../components/Movies";
 
@@ -8,10 +8,8 @@ function Popular() {
   return (
     <div>
       <Navbar />
-      <div className="d-flex ">
-        <Filters />
-        <Movies apiUrl={apiUrl3} title="Popular movies" />
-      </div>
+      <Filters />
+      <Movies apiUrl={apiUrl3} title="Popular movies" />
     </div>
   );
 }

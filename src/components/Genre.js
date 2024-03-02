@@ -21,9 +21,9 @@ function Genre() {
   };
   return (
     <div>
-      <div className="btn-group">
+      <div className="btn-group float-start btn w-100 p-0">
         <button
-          className="btn text-white nav-item"
+          className="btn btn-dark text-white nav-item w-100 d-flex justify-content-start"
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
