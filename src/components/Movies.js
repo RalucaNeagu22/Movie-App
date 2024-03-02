@@ -26,8 +26,8 @@ function Movies({ apiUrl, title }) {
         <h1 className="fs-3">{title}</h1>
       </div>
       <div className="row me-0">
-        {movies.map((movie) => (
-          <div key={movie.id} className="col-2">
+        {movies.map((movie, index) => (
+          <div key={index} className="col-2">
             <Link
               to={`/movie/${encodeURIComponent(movie.id)}`}
               style={{ color: "inherit", textDecoration: "none" }}

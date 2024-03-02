@@ -3,8 +3,8 @@ import Navbar from "../components/NavbarComponents/Navbar";
 import Filters from "../components/Filters";
 import { useParams } from "react-router-dom";
 import MovieDetails from "../components/MovieDetails";
-import Reviews from "../components/Reviews";
 import Similar from "../components/Similar";
+import Reviews from "../components/Reviews/Reviews";
 
 function MoviePage() {
   const { id } = useParams();
@@ -104,6 +104,8 @@ function MoviePage() {
             reviews={reviews}
             expandedReviews={expandedReviews}
             toggleShowFullReview={toggleShowFullReview}
+            movieId={id}
+            movie={movie}
           />
           <Similar movieId={id} />
         </div>

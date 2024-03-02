@@ -9,6 +9,7 @@ import AlreadySeen from "./pages/AlreadySeen";
 import PageNotFound from "./pages/PageNotFound";
 import Upcoming from "./pages/Upcoming";
 import Popular from "./pages/Popular";
+import YourReviews from "./pages/YourReviews";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/*" element={<PageNotFound />} />
         <Route path="/upcoming" element={<Upcoming />} />
         <Route path="/popular" element={<Popular />} />
+        <Route path="/contributions" element={<YourReviews />} />
       </Routes>
     </BrowserRouter>
   );

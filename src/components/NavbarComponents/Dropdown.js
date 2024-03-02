@@ -26,7 +26,7 @@ function Dropdown() {
         <Link to={"/Already-seen"} className="text-decoration-none">
           <li className="dropdown-item">Already seen</li>
         </Link>
-        <Link to={"/Watchlist"} className="text-decoration-none">
+        <Link to={"/contributions"} className="text-decoration-none">
           <li className="dropdown-item">My reviews</li>
         </Link>
       </ul>
