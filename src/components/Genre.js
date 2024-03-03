@@ -20,15 +20,15 @@ function Genre() {
     }
   };
   return (
-    <div>
-      <div className="btn-group float-start btn w-100 p-0">
+    <>
+      <div className="btn-group dropend float-start btn w-100 p-0">
         <button
           className="btn btn-dark text-white nav-item w-100 d-flex justify-content-start"
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Movie Genre
+          Genres
         </button>
         <ul className="dropdown-menu">
           {genres.map((genre) => (
@@ -42,7 +42,7 @@ function Genre() {
           ))}
         </ul>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import MovieList from "../components/MovieList";
 import Navbar from "../components/NavbarComponents/Navbar";
 import Filters from "../components/Filters";
+import Movies from "../components/Movies";
 
 function Genrespage() {
   const { genre: genreId } = useParams();
@@ -40,14 +40,20 @@ function Genrespage() {
       console.error("Error fetching genres:", error);
     }
   };
-
+  if (genre == null) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
       <Navbar />
-      <div className="d-flex">
-        <Filters />
-        <MovieList movies={movies} genre={genre} />
-      </div>
+      <Filters />
+      <Movies
+        key={genreId}
+        apiUrl={`https://api.themoviedb.org/3/discover/movie?&with_genres=${encodeURIComponent(
+          genreId
+        )}`}
+        title={genre.name}
+      />
     </div>
   );
 }

@@ -15,15 +15,15 @@ function YourReviews() {
       <Navbar />
       <Filters />
       <div
-        style={{ marginLeft: "17rem" }}
-        className="row row-cols-5 row-gap-3 mt-5 me-5"
+        style={{ marginTop: "4%" }}
+        className="row col-10 float-end me-1 mb-5"
       >
         {savedReviews.map((review) => (
-          <Link
-            to={`/movie/${encodeURIComponent(review.movieId)}`}
-            style={{ color: "inherit", textDecoration: "none" }}
-          >
-            <div key={review.id} className="modal-content rounded-4 shadow p-3">
+          <div key={review.id} className="modal-content rounded-4 shadow p-3">
+            <Link
+              to={`/movie/${encodeURIComponent(review.movieId)}`}
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
               <div className="modal-header border-bottom-0">
                 <p className="modal-title fs-5 fw-semibold">
                   {review.movieTitle}
@@ -35,8 +35,8 @@ function YourReviews() {
               <div>
                 <p className="float-end">{review.user}</p>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         ))}
       </div>
     </div>

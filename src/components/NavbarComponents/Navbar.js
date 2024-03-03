@@ -37,14 +37,14 @@ function Navbar() {
   };
 
   return (
-    <div className="sticky-top" style={{ maxHeight: "10vh" }}>
-      <header className="p-3 text-bg-dark row me-0">
+    <div className="fixed-top" style={{ height: "4%" }}>
+      <header className="p-3 text-bg-dark row me-0 sticky-top">
         <div className="row">
-          <div className="col-6 d-flex">
+          <div className="col-5 d-flex">
             <Logo />
             <MovieRecommandationcandAbout />
           </div>
-          <div className="col-6 d-flex gap-5 d-flex justify-content-end">
+          <div className="col-7 d-flex gap-5 d-flex justify-content-end">
             <Search
               searchQuery={searchQuery}
               handleInputChange={handleInputChange}

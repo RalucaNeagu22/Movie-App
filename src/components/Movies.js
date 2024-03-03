@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-function Movies({ apiUrl, title }) {
+function Movies({ key, apiUrl, title }) {
   const [movies, setMovies] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
 
@@ -21,13 +21,13 @@ function Movies({ apiUrl, title }) {
   }, [pageNumber]);
 
   return (
-    <div style={{ marginLeft: "17rem" }}>
-      <div className=" my-5">
+    <div className="row col-10 float-end me-1" style={{ marginTop: "4%" }}>
+      <div className="my-5">
         <h1 className="fs-3">{title}</h1>
       </div>
-      <div className="row me-0">
+      <div className="row m-0">
         {movies.map((movie, index) => (
-          <div key={index} className="col-2">
+          <div key={index} className=" col-xl-2 col-lg-2 col-md-3 col-sm-6">
             <Link
               to={`/movie/${encodeURIComponent(movie.id)}`}
               style={{ color: "inherit", textDecoration: "none" }}

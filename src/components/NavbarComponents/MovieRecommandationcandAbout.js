@@ -3,16 +3,33 @@ import { Link } from "react-router-dom";
 
 function MovieRecommandationcandAbout() {
   return (
-    <div className="nav col-lg-auto me-lg-auto mb-2 mb-md-0 gap-2">
-      <Link
-        to={"/movie-recommandation-engine"}
-        className="text-decoration-none text-white"
+    <div className="row mb-md-0">
+      <div
+        className="col-9 m-0 p-0"
+        // style={{
+        //   width: "100px",
+        //   overflow: "hidden",
+        //   whiteSpace: "no wrap",
+        //   textOverflow: "ellipsis",
+        // }}
       >
-        <button className="btn btn-dark">Movie Recommendation</button>
-      </Link>
-      <Link to={"/About"} className="text-decoration-none text-white">
-        <button className="btn btn-dark">About</button>
-      </Link>
+        <Link
+          to={"/movie-recommandation-engine"}
+          className="text-decoration-none text-white"
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          <button className="btn btn-dark">Movie Recommendation</button>
+        </Link>
+      </div>
+      <div className="col-3 m-0 p-0">
+        <Link to={"/About"} className="text-decoration-none text-white">
+          <button className="btn btn-dark">About</button>
+        </Link>
+      </div>
     </div>
   );
 }

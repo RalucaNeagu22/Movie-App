@@ -4,6 +4,7 @@ import Filters from "../components/Filters";
 import logo from "../assets/moviesblurred.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import popcorn from "../assets/popcorn.jpg";
 
 function MovieRecommandation() {
   const [randomMovie, setRandomMovie] = useState(null);
@@ -28,67 +29,82 @@ function MovieRecommandation() {
   };
 
   return (
-    <div className="bg-body-secondary bg-gradient" style={{ height: "100vh" }}>
+    <div
+      style={{
+        backgroundImage: `url(${popcorn})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "repeat",
+        height: "100vh",
+      }}
+    >
       <Navbar />
       <Filters />
       <div
-        style={{ marginLeft: "17rem" }}
-        className="me-4 mt-5 d-flex flex-column align-items-center "
+        style={{ marginTop: "4%" }}
+        className="row col-10 float-end me-1 d-flex justify-content-center text-center"
       >
-        <p
+        <div
+          className="mt-5"
           style={{
             color: "#868B8E",
           }}
-          className="fs-3"
         >
-          MOVIE RECOMMENDATION ENGINE
-        </p>
-        <p style={{ color: "#868B8E" }} className="fs-4">
+          <h1 className="fs-3">MOVIE RECOMMENDATION ENGINE</h1>
+        </div>
+        <p style={{ color: "#868B8E" }} className="fs-5 text-center">
           You can't decide between thousands of movies?
         </p>
-        <p style={{ color: "#868B8E" }} className="fs-4">
+        <p style={{ color: "#868B8E" }} className="fs-5  text-center">
           Press the button and let us do the work!
         </p>
-        <button
-          type="button"
-          className="btn btn-dark btn-lg my-5"
-          onClick={handleSubmit}
-        >
-          Start Now
-        </button>
-        {randomMovie && (
-          <div
-            className="mt-1 bg-secondary-subtle bg-opacity-10 d-flex justify-content-center"
-            style={{ width: "17vw" }}
+        <div className="text-center">
+          <button
+            type="button"
+            className="btn btn-dark btn-lg mb-xxl-4 mb-xl-0 mb-lg-0"
+            onClick={handleSubmit}
           >
+            Start Now
+          </button>
+        </div>
+        <div className="d-flex justify-content-center">
+          {randomMovie && (
             <Link
               to={`/movie/${encodeURIComponent(randomMovie.id)}`}
               style={{ color: "inherit", textDecoration: "none" }}
             >
-              <p
-                className="fs-3 fw-bold text-center pt-2"
-                style={{ color: "#868B8E" }}
+              <div
+                className="mt-3  bg-dark bg-gradient  rounded-4 d-flex justify-content-center d-flex flex-column"
+                style={{ maxHeight: "370px" }}
               >
-                {randomMovie.title}
-              </p>
-
-              <p
-                className="fs-3 fw-bold text-center"
-                style={{ color: "#868B8E" }}
-              >
-                {randomMovie.vote_average.toFixed(1)}/10
-              </p>
-              <div className="d-flex justify-content-center">
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
-                  alt={randomMovie.title}
-                  style={{ width: "15vw" }}
-                  className="p-3 mb-4"
-                />
+                <div className="d-flex gap-3 justify-content-center px-3">
+                  <p
+                    className="fs-5 fw-bold text-center pt-2"
+                    style={{ color: "#fafafa" }}
+                  >
+                    {randomMovie.title}
+                  </p>
+                  <p
+                    className="fs-5 fw-bold text-center pt-2"
+                    style={{ color: "#fafafa" }}
+                  >
+                    {randomMovie.vote_average.toFixed(1)}/10
+                  </p>
+                </div>
+                <div
+                  className="d-flex justify-content-center d-flex justify-content-center align-content-center align-items-center px-4"
+                  style={{ color: "red" }}
+                >
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
+                    alt={randomMovie.title}
+                    style={{ maxHeight: "280px" }}
+                    className="mb-4"
+                  />
+                </div>
               </div>
             </Link>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
