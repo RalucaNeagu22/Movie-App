@@ -38,18 +38,23 @@ const Search = ({ searchQuery, handleInputChange, searchResults }) => {
                         <p className="font-monospace">No img</p>
                       </div>
                     )}
-
-                    <p
-                      className="fs-6 text-start"
-                      style={{
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                        height: "50px",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {movie.title}
-                    </p>
+                    <div className="d-flex flex-column  float-start">
+                      <p
+                        className="fs-6"
+                        style={{
+                          textOverflow: "ellipsis",
+                          overflow: "hidden",
+                          height: "30px",
+                          whiteSpace: "nowrap",
+                          margin: "0",
+                        }}
+                      >
+                        {movie.title}
+                      </p>
+                      <p className="text-start">
+                        ★{movie.vote_average.toFixed(1)}
+                      </p>
+                    </div>
                   </div>
                 </Link>
               </button>

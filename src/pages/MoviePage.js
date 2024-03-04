@@ -11,8 +11,12 @@ function MoviePage() {
   const [movie, setMovie] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [expandedReviews, setExpandedReviews] = useState({});
-  const [favorites, setFavorites] = useState([]);
-  const [seen, setSeen] = useState([]);
+  const [favorites, setFavorites] = useState(
+    JSON.parse(localStorage.getItem("favorites")) || []
+  );
+  const [seen, setSeen] = useState(
+    JSON.parse(localStorage.getItem("seen")) || []
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,7 +46,7 @@ function MoviePage() {
     }));
   };
 
-  const handleClick = () => {
+  const handleWatchlist = () => {
     if (movie) {
       const { id, title, poster_path, vote_average, vote_count } = movie;
       const favoritesFromStorage =
@@ -67,7 +71,7 @@ function MoviePage() {
       }
     }
   };
-  const handleClickButton = () => {
+  const handleSeen = () => {
     if (movie) {
       const { id, title, poster_path, vote_average, vote_count } = movie;
       const seenFromStorage = JSON.parse(localStorage.getItem("seen")) || [];
@@ -93,12 +97,17 @@ function MoviePage() {
     <div>
       <Navbar />
       <Filters />
-      <div style={{ marginLeft: "17rem" }}>
-        <div className="mx-5 my-5">
+      <div
+        style={{ marginTop: "4%" }}
+        className="row col-10 float-end me-1 mb-5"
+      >
+        <div className="p-5">
           <MovieDetails
             movie={movie}
-            handleClick={handleClick}
-            handleClickButton={handleClickButton}
+            handleWatchlist={handleWatchlist}
+            handleSeen={handleSeen}
+            favorites={favorites}
+            seen={seen}
           />
           <Reviews
             reviews={reviews}
