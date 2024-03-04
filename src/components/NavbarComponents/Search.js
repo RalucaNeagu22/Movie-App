@@ -38,13 +38,14 @@ const Search = ({ searchQuery, handleInputChange, searchResults }) => {
                         <p className="font-monospace">No img</p>
                       </div>
                     )}
-                    <div className="d-flex flex-column  float-start">
+                    <div className="d-flex flex-column float-start">
                       <p
-                        className="fs-6"
+                        className="fs-6 text-start"
                         style={{
                           textOverflow: "ellipsis",
                           overflow: "hidden",
                           height: "30px",
+                          width: "15rem",
                           whiteSpace: "nowrap",
                           margin: "0",
                         }}
