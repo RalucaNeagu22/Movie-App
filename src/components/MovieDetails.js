@@ -42,7 +42,8 @@ function MovieDetails({ movie, handleWatchlist, handleSeen, favorites, seen }) {
                   </button>
                 </div>
                 <p>
-                  {movie.vote_average} ({movie.vote_count} votes)
+                  {Number(movie.vote_average).toFixed(1)} ({movie.vote_count}{" "}
+                  votes)
                 </p>
                 <p>{movie.overview}</p>
               </div>

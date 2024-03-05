@@ -94,14 +94,12 @@ const Reviews = ({
         </button>
       </div>
 
-      {/* Saved Reviews */}
       <SavedReviews
         savedReviews={savedReviews}
         movieId={movieId}
         handleDelete={handleDelete}
       />
 
-      {/* Fetched Reviews */}
       <FetchedReviews
         reviews={fetchedReviews}
         expandedReviews={expandedReviews}
