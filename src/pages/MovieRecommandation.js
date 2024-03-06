@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/NavbarComponents/Navbar";
 import Filters from "../components/Filters";
-import logo from "../assets/moviesblurred.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import popcorn from "../assets/popcorn.jpg";
